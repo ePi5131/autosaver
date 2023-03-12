@@ -76,7 +76,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)aviutl_exedit_sdk;$(ProjectDir)winwrap</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)aviutl_exedit_sdk;$(ProjectDir)winwrap;$(ProjectDir)json.h</AdditionalIncludeDirectories>
       <AdditionalOptions>/source-charset:utf-8  /d1clrcxxstd %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -97,7 +97,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)aviutl_exedit_sdk;$(ProjectDir)winwrap</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)aviutl_exedit_sdk;$(ProjectDir)winwrap;$(ProjectDir)json.h</AdditionalIncludeDirectories>
       <AdditionalOptions>/source-charset:utf-8  /d1clrcxxstd %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -120,7 +120,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)aviutl_exedit_sdk;$(ProjectDir)winwrap</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)aviutl_exedit_sdk;$(ProjectDir)winwrap;$(ProjectDir)json.h</AdditionalIncludeDirectories>
       <AdditionalOptions>/source-charset:utf-8  /d1clrcxxstd %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -141,7 +141,6 @@
     <None Include="autosaver.def" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="json.h" />
     <ClInclude Include="scope_exit.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

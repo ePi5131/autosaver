@@ -7,7 +7,6 @@
     <None Include="autosaver.def" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="json.h" />
     <ClInclude Include="scope_exit.hpp" />
   </ItemGroup>
 </Project>
