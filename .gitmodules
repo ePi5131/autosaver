@@ -1,0 +1,6 @@
+[submodule "autosaver/aviutl_exedit_sdk"]
+	path = autosaver/aviutl_exedit_sdk
+	url = https://github.com/epi5131/aviutl_exedit_sdk.git
+[submodule "autosaver/winwrap"]
+	path = autosaver/winwrap
+	url = https://github.com/epi5131/winwrap.git
