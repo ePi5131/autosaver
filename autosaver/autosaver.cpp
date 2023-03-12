@@ -1,4 +1,4 @@
-#include <string>
+﻿#include <string>
 #include <filesystem>
 #include <iostream>
 #include <fstream>
@@ -81,26 +81,32 @@ void save_project(const std::filesystem::path& path) {
 }
 
 BOOL __cdecl func_init(AviUtl::FilterPlugin* fp) {
-	 auto& state = get_state();
-	 auto& setting = get_setting();
+	AviUtl::SysInfo si; fp->exfunc->get_sys_info(nullptr, &si);
+	if (si.build != 11003) {
+		MessageBoxW(fp->hwnd_parent, L"バージョン1.10のAviUtlが必要です。", L"autosaver", MB_ICONINFORMATION);
+		return FALSE;
+	}
+
+	auto& state = get_state();
+	auto& setting = get_setting();
 	 
-	 auto self_dir = std::filesystem::path{ WinWrap::Module{ fp->dll_hinst }.getFileNameW() }.parent_path();
-	 state.setting_path = self_dir / L"autosaver.json";
-	 state.unsaved_project_autosave_dir = self_dir / "autosaver";
+	auto self_dir = std::filesystem::path{ WinWrap::Module{ fp->dll_hinst }.getFileNameW() }.parent_path();
+	state.setting_path = self_dir / L"autosaver.json";
+	state.unsaved_project_autosave_dir = self_dir / "autosaver";
 
-	 WinWrap::Module aviutl{};
-	 auto aviutl_base = reinterpret_cast<uintptr_t>(aviutl.getHandle());
-	 state.adr_editp = reinterpret_cast<decltype(state.adr_editp)>(aviutl_base + 0x08717c);
-	 state.save_project = reinterpret_cast<decltype(state.save_project)>(aviutl_base + 0x024160);
+	WinWrap::Module aviutl{};
+	auto aviutl_base = reinterpret_cast<uintptr_t>(aviutl.getHandle());
+	state.adr_editp = reinterpret_cast<decltype(state.adr_editp)>(aviutl_base + 0x08717c);
+	state.save_project = reinterpret_cast<decltype(state.save_project)>(aviutl_base + 0x024160);
 
-	 if (std::filesystem::exists(state.setting_path)) {
-		 setting.load(state.setting_path);
-	 }
-	 else {
-		 setting.store(state.setting_path);
-	 }
+	if (std::filesystem::exists(state.setting_path)) {
+		setting.load(state.setting_path);
+	}
+	else {
+		setting.store(state.setting_path);
+	}
 
-	 return TRUE;
+	return TRUE;
 }
 
 BOOL __cdecl func_proc(AviUtl::FilterPlugin* fp, AviUtl::FilterProcInfo* fpip) {
@@ -138,7 +144,7 @@ AviUtl::FilterPluginDLL filter{
 	.name = "autosaver",
 	.func_proc = func_proc,
 	.func_init = func_init,
-	.information = "autosaver r1 by ePi",
+	.information = "autosaver r2 by ePi",
 };
 
 auto __stdcall GetFilterTable() {
