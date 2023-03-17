@@ -8,7 +8,7 @@
 
 #include <aviutl/filter.hpp>
 #include <winwrap.hpp>
-#include "json.h"
+#include <json.h>
 #include "scope_exit.hpp"
 
 using namespace std::string_view_literals;
