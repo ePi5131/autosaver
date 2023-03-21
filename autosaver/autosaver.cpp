@@ -122,7 +122,7 @@ BOOL __cdecl func_proc(AviUtl::FilterPlugin* fp, AviUtl::FilterProcInfo* fpip) {
 
 	std::filesystem::path autosave_dir = [proj = si.project_name, &state] {
 		if (proj && proj[0] != '\0') {
-			return std::filesystem::path{ proj }.parent_path();
+			return std::filesystem::path{ proj }.parent_path() / "autosaver";
 		}
 		else {
 			return state.unsaved_project_autosave_dir;
@@ -144,7 +144,7 @@ AviUtl::FilterPluginDLL filter{
 	.name = "autosaver",
 	.func_proc = func_proc,
 	.func_init = func_init,
-	.information = "autosaver r2 by ePi",
+	.information = "autosaver r3 by ePi",
 };
 
 auto __stdcall GetFilterTable() {
